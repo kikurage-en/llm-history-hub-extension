@@ -1,0 +1,202 @@
+{
+  "extName": {
+    "message": "LLM History Hub",
+    "description": "Extension name shown in chrome://extensions and Chrome Web Store. DO NOT TRANSLATE — proper noun, must remain identical in all locales."
+  },
+  "extDescription": {
+    "message": "Unified chat history hub for ChatGPT / Claude / Gemini / GoogleAI / Grok / Grok on X.",
+    "description": "Extension short description in manifest.json (max 132 bytes UTF-8). Service brand names (ChatGPT, Claude, Gemini, GoogleAI, Grok) are proper nouns — DO NOT TRANSLATE."
+  },
+  "actionTitle": {
+    "message": "LLM History Hub",
+    "description": "Tooltip shown on hover over the toolbar action icon. DO NOT TRANSLATE — proper noun."
+  },
+
+  "actionSync": { "message": "Sync", "description": "Header button label that triggers the sync flow." },
+  "actionDelete": { "message": "Delete", "description": "Header button label that opens the delete-services dialog." },
+  "actionCancel": { "message": "Cancel", "description": "Generic cancel button label used in dialogs." },
+  "actionCopyUrl": { "message": "Copy URL", "description": "Tooltip and aria-label for the row-level URL copy button." },
+  "actionFavorite": { "message": "Favorite", "description": "Tooltip and aria-label for the row-level favorite (♥) toggle." },
+
+  "a11yMenu": { "message": "Menu", "description": "Aria-label and tooltip for the ⋯ menu summary button." },
+  "a11yFilterSection": { "message": "Filters", "description": "Aria-label for the filter section." },
+  "a11yDateRangeFilter": { "message": "Date range filter", "description": "Aria-label for the date range group inside the filter section." },
+  "a11yDateFrom": { "message": "Start date", "description": "Aria-label for the start-date input." },
+  "a11yDateTo": { "message": "End date", "description": "Aria-label for the end-date input." },
+  "a11yServiceFilter": { "message": "Services", "description": "Aria-label for the service chips group." },
+  "a11yServiceFilterAll": { "message": "Show all services", "description": "Aria-label for the All chip." },
+  "a11yServiceFilterFavorite": { "message": "Filter by favorites", "description": "Aria-label for the ♥ favorites chip." },
+  "a11yServiceFilterChatgpt": { "message": "Filter by ChatGPT", "description": "Aria-label for the ChatGPT chip. ChatGPT is a proper noun." },
+  "a11yServiceFilterClaude": { "message": "Filter by Claude", "description": "Aria-label for the Claude chip. Claude is a proper noun." },
+  "a11yServiceFilterGemini": { "message": "Filter by Gemini", "description": "Aria-label for the Gemini chip. Gemini is a proper noun." },
+  "a11yServiceFilterGoogleai": { "message": "Filter by GoogleAI", "description": "Aria-label for the GoogleAI chip. GoogleAI is a proper noun." },
+  "a11yServiceFilterGrok": { "message": "Filter by Grok", "description": "Aria-label for the Grok chip. Grok is a proper noun." },
+  "a11yServiceFilterXgrok": { "message": "Filter by Grok on X", "description": "Aria-label for the X-Grok chip (Grok feature embedded in X.com)." },
+  "a11yDatePresetAll": { "message": "All time", "description": "Aria-label for the date preset chip that selects all dates." },
+  "a11yDatePreset7d": { "message": "Past 7 days", "description": "Aria-label for the 7-day date preset chip." },
+  "a11yDatePreset30d": { "message": "Past 30 days", "description": "Aria-label for the 30-day date preset chip." },
+  "a11yAccountFilter": { "message": "Filter by account", "description": "Aria-label for the account select." },
+  "a11ySortToggle": { "message": "Toggle sort direction", "description": "Aria-label for the sort direction button." },
+  "a11yScrollTop": { "message": "Scroll to top of list", "description": "Aria-label and tooltip for the floating scroll-to-top button shown when the list is scrolled down." },
+
+  "chipWithCount": {
+    "message": "$LABEL$ ($COUNT$)",
+    "description": "Service chip label with a count badge. ja uses no space (`All(15)`); en uses a space before the parenthesis (`All (15)`).",
+    "placeholders": {
+      "label": { "content": "$1", "example": "ChatGPT" },
+      "count": { "content": "$2", "example": "15" }
+    }
+  },
+
+  "filterDatePresetAll": { "message": "All time", "description": "Date range preset chip for showing all dates." },
+  "filterDatePreset7d": { "message": "7d", "description": "Date range preset chip for the past 7 days." },
+  "filterDatePreset30d": { "message": "30d", "description": "Date range preset chip for the past 30 days." },
+  "filterSearchPlaceholder": { "message": "Search title", "description": "Placeholder and aria-label for the title search input." },
+  "filterSortDesc": { "message": "Updated ▼", "description": "Sort direction button label (descending = newest first)." },
+  "filterSortAsc": { "message": "Updated ▲", "description": "Sort direction button label (ascending = oldest first)." },
+
+  "accountAllWithCount": {
+    "message": "All accounts ($COUNT$)",
+    "description": "Account select option label with a count badge.",
+    "placeholders": { "count": { "content": "$1", "example": "118" } }
+  },
+
+  "menuExportJson": { "message": "Export as JSON", "description": "Menu item that exports all records as a JSON file." },
+  "menuExportCsv": { "message": "Export as CSV", "description": "Menu item that exports all records as a CSV file." },
+  "menuImportJson": { "message": "Import from JSON", "description": "Menu item that imports records from a JSON file." },
+
+  "emptyNoHistoryTitle": { "message": "No history yet", "description": "Empty-state title shown when no records exist in IndexedDB." },
+  "emptyNoHistoryHint": { "message": "Click the \"Sync\" button at the top to fetch your history.", "description": "Empty-state hint suggesting the user runs sync." },
+  "emptyFilteredTitle": { "message": "No matching history", "description": "Empty-state title shown when filters exclude all records." },
+  "emptyFilteredHint": { "message": "Try changing your filter.", "description": "Empty-state hint suggesting the user adjust filters." },
+
+  "dialogMismatchTitle": { "message": "Different account", "description": "Title of the account-mismatch warning dialog." },
+  "dialogMismatchTargetLabel": { "message": "Target: ", "description": "Prefix label before the target account email in the mismatch dialog body. Includes trailing space." },
+  "dialogMismatchCopyUrl": { "message": "Copy URL", "description": "Button label that copies the conversation URL to clipboard." },
+  "dialogMismatchOpenAnyway": { "message": "Open anyway", "description": "Button label that opens the conversation in current browser despite mismatch." },
+
+  "dialogSyncTitle": { "message": "Select services to sync", "description": "Title of the sync-services selection dialog." },
+  "dialogSyncConfirm": { "message": "Sync", "description": "Confirm button label inside the sync dialog." },
+  "dialogDeleteTitle": { "message": "Select services to delete (irreversible)", "description": "Title of the delete-services selection dialog. The (irreversible) suffix is intentional." },
+  "dialogDeleteConfirm": { "message": "Delete", "description": "Confirm button label inside the delete dialog." },
+  "dialogSelectionAll": { "message": "All", "description": "Checkbox label for the All option in sync/delete dialogs." },
+
+  "serviceXgrok": { "message": "Grok on X", "description": "Display name for the Grok feature embedded in X.com. Use proper noun for the rest (ChatGPT/Claude/Gemini/GoogleAI/Grok)." },
+
+  "commonUntitled": { "message": "(Untitled)", "description": "Fallback label for records without a title (rec.title is empty)." },
+  "badgeMismatch": { "message": "⚠ Different account", "description": "Row badge shown when the record's accountEmail differs from the current Chrome profile." },
+
+  "statusLoginRequired": { "message": "Login required", "description": "Status label for the not_logged_in error code." },
+  "statusNetworkError": { "message": "Network error", "description": "Status label for the network_error code (fetch TypeError)." },
+  "statusTabUnreachable": { "message": "Tab not open", "description": "Status label for the tab_unreachable code (no matching tab found)." },
+  "statusContentUnreachable": { "message": "Reload required", "description": "Status label for the content_unreachable code (content script not injected; reload tab)." },
+  "statusAccountUnknown": { "message": "Account unknown", "description": "Status label for account_email_not_found / screenname_not_found codes." },
+  "statusDomChanged": { "message": "DOM changed", "description": "Status label for pfp_not_found / userid_not_found / history_container_not_found / profile_link_not_found codes." },
+  "statusInvalidOrg": { "message": "Invalid org", "description": "Status label for the invalid_org_entry code (Claude organization parsing failed)." },
+  "statusInvalidShape": { "message": "Invalid response", "description": "Status label for the unexpected_response_shape code." },
+  "statusSessionFailed": { "message": "Session fetch failed", "description": "Status label for the session_retrieval_failed code (Gemini)." },
+  "statusConvFetchFailed": { "message": "History fetch failed", "description": "Status label for the conversations_retrieval_failed code (X-Grok)." },
+  "statusGenericError": { "message": "Error", "description": "Status label for unrecognized error codes." },
+  "statusErrorUnknown": { "message": "Unknown error", "description": "Fallback used when an error string is missing." },
+
+  "syncing": { "message": "Syncing…", "description": "Sync button text during a sync flow (with spinner)." },
+  "syncBtnTotalCount": {
+    "message": "Sync ($COUNT$)",
+    "description": "Sync button text after a multi-service sync completes.",
+    "placeholders": { "count": { "content": "$1", "example": "275" } }
+  },
+  "syncBtnSingleCount": {
+    "message": "Sync ($SVC$ $COUNT$)",
+    "description": "Sync button text after a single-service sync completes.",
+    "placeholders": {
+      "svc": { "content": "$1", "example": "ChatGPT" },
+      "count": { "content": "$2", "example": "153" }
+    }
+  },
+  "syncBtnFailed": { "message": "Sync (failed)", "description": "Sync button text when all services fail." },
+
+  "statusSyncRowOk": {
+    "message": "$SVC$: ✓ $COUNT$",
+    "description": "Per-service sync success row in the status bar.",
+    "placeholders": {
+      "svc": { "content": "$1", "example": "ChatGPT" },
+      "count": { "content": "$2", "example": "119" }
+    }
+  },
+  "statusSyncFailed": { "message": "Sync failed: see console", "description": "Status bar message when the entire sync flow throws." },
+
+  "syncActionGemini": { "message": "Open it in a tab and re-sync", "description": "Action button label that opens gemini.google.com and asks the user to retry. Service name omitted to fit narrow side-panel width; the adjacent service-row label identifies which service this action targets." },
+  "syncActionGoogleai": { "message": "Open it in a tab and re-sync", "description": "Action button label that opens google.com/search?udm=50 and asks the user to retry. Service name omitted to fit narrow side-panel width; the adjacent service-row label identifies which service this action targets." },
+  "syncActionGrok": { "message": "Open it in a tab and re-sync", "description": "Action button label that opens grok.com and asks the user to retry. Service name omitted to fit narrow side-panel width; the adjacent service-row label identifies which service this action targets." },
+  "syncActionXgrok": { "message": "Open it in a tab and re-sync", "description": "Action button label that opens x.com/i/grok/history and asks the user to retry. Service name omitted to fit narrow side-panel width; the adjacent service-row label identifies which service this action targets." },
+
+  "deleteSvcCount": {
+    "message": "$SVC$ ($COUNT$)",
+    "description": "Per-service breakdown entry inside the delete-success status bar message.",
+    "placeholders": {
+      "svc": { "content": "$1", "example": "ChatGPT" },
+      "count": { "content": "$2", "example": "5" }
+    }
+  },
+  "statusDeleteOk": {
+    "message": "Deleted: $BREAKDOWN$ — total $TOTAL$",
+    "description": "Status bar message after successful delete.",
+    "placeholders": {
+      "breakdown": { "content": "$1", "example": "ChatGPT (5), Grok (3)" },
+      "total": { "content": "$2", "example": "8" }
+    }
+  },
+  "statusDeleteEmpty": { "message": "(none)", "description": "Breakdown placeholder when no records were deleted." },
+  "statusDeleteFailed": {
+    "message": "Delete failed: $ERR$",
+    "description": "Status bar message after a delete error from SW.",
+    "placeholders": { "err": { "content": "$1", "example": "DB write error" } }
+  },
+  "statusDeleteFailedConsole": { "message": "Delete failed: see console", "description": "Status bar message when the delete flow throws." },
+
+  "toastFavoriteFailed": { "message": "Favorite update failed: see console", "description": "Status bar message when toggling favorite fails to write to IndexedDB." },
+
+  "toastExportJsonOk": {
+    "message": "Exported $COUNT$ items (JSON)",
+    "description": "Status bar message after a successful JSON export.",
+    "placeholders": { "count": { "content": "$1", "example": "118" } }
+  },
+  "toastExportCsvOk": {
+    "message": "Exported $COUNT$ items (CSV)",
+    "description": "Status bar message after a successful CSV export.",
+    "placeholders": { "count": { "content": "$1", "example": "118" } }
+  },
+  "toastExportFailed": { "message": "Export failed: see console", "description": "Status bar message when the export flow throws." },
+
+  "toastImportFilePickFailed": { "message": "Import failed: file picker error", "description": "Status bar message when the OS file picker fails." },
+  "toastImportCanceled": { "message": "Import canceled", "description": "Status bar message when the user cancels the import." },
+  "toastImportInvalidJson": { "message": "Import failed: invalid JSON", "description": "Status bar message for the invalid_json error code." },
+  "toastImportNotArray": { "message": "Import failed: not an array", "description": "Status bar message for the not_an_array error code." },
+  "toastImportGenericFailed": {
+    "message": "Import failed: $DETAIL$",
+    "description": "Status bar message for unknown import errors.",
+    "placeholders": { "detail": { "content": "$1", "example": "JSON parse error" } }
+  },
+  "toastImportDbReadFailed": { "message": "Import failed: DB read error", "description": "Status bar message when readAll() throws during import." },
+  "toastImportMergeFailed": { "message": "Import failed: merge error", "description": "Status bar message when mergeRecords throws during import." },
+  "toastImportDbWriteFailed": { "message": "Import failed: DB write error", "description": "Status bar message when upsert() throws during import." },
+  "toastImportOk": {
+    "message": "Import complete: $CREATED$ new / $UPDATED$ updated",
+    "description": "Status bar message after a successful import.",
+    "placeholders": {
+      "created": { "content": "$1", "example": "12" },
+      "updated": { "content": "$2", "example": "3" }
+    }
+  },
+
+  "importConfirmBody": {
+    "message": "Import preview:\n  New: $CREATED$\n  Updated: $UPDATED$\n  Unchanged: $UNCHANGED$\n  Invalid: $INVALID$\n\n* Records sharing the same service / accountEmail / conversationId\n  are overwritten with the newer updatedAt.\n* Favorite (♥) is overwritten only if the JSON has it.\n\nApply changes?",
+    "description": "Multi-line confirm() text shown before applying an import. Use \\n for line breaks. Numbers are filled from $CREATED$/$UPDATED$/$UNCHANGED$/$INVALID$.",
+    "placeholders": {
+      "created": { "content": "$1", "example": "12" },
+      "updated": { "content": "$2", "example": "3" },
+      "unchanged": { "content": "$3", "example": "100" },
+      "invalid": { "content": "$4", "example": "0" }
+    }
+  }
+}

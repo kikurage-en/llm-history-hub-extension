@@ -1,0 +1,202 @@
+{
+  "extName": {
+    "message": "LLM History Hub",
+    "description": "Extension name shown in chrome://extensions and Chrome Web Store. DO NOT TRANSLATE — proper noun, must remain identical in all locales."
+  },
+  "extDescription": {
+    "message": "ChatGPT / Claude / Gemini / GoogleAI / Grok / X内Grok のチャット履歴を横断管理する Chrome 拡張",
+    "description": "Extension short description in manifest.json (max 132 bytes UTF-8). Service brand names (ChatGPT, Claude, Gemini, GoogleAI, Grok) are proper nouns — DO NOT TRANSLATE."
+  },
+  "actionTitle": {
+    "message": "LLM History Hub",
+    "description": "Tooltip shown on hover over the toolbar action icon. DO NOT TRANSLATE — proper noun."
+  },
+
+  "actionSync": { "message": "同期", "description": "Header button label that triggers the sync flow." },
+  "actionDelete": { "message": "削除", "description": "Header button label that opens the delete-services dialog." },
+  "actionCancel": { "message": "キャンセル", "description": "Generic cancel button label used in dialogs." },
+  "actionCopyUrl": { "message": "URL コピー", "description": "Tooltip and aria-label for the row-level URL copy button." },
+  "actionFavorite": { "message": "お気に入り", "description": "Tooltip and aria-label for the row-level favorite (♥) toggle." },
+
+  "a11yMenu": { "message": "メニュー", "description": "Aria-label and tooltip for the ⋯ menu summary button." },
+  "a11yFilterSection": { "message": "フィルタ", "description": "Aria-label for the filter section." },
+  "a11yDateRangeFilter": { "message": "日付範囲フィルタ", "description": "Aria-label for the date range group inside the filter section." },
+  "a11yDateFrom": { "message": "期間開始日", "description": "Aria-label for the start-date input." },
+  "a11yDateTo": { "message": "期間終了日", "description": "Aria-label for the end-date input." },
+  "a11yServiceFilter": { "message": "サービス", "description": "Aria-label for the service chips group." },
+  "a11yServiceFilterAll": { "message": "すべてのサービスを表示", "description": "Aria-label for the All chip." },
+  "a11yServiceFilterFavorite": { "message": "お気に入りでフィルタ", "description": "Aria-label for the ♥ favorites chip." },
+  "a11yServiceFilterChatgpt": { "message": "ChatGPTでフィルタ", "description": "Aria-label for the ChatGPT chip. ChatGPT is a proper noun." },
+  "a11yServiceFilterClaude": { "message": "Claudeでフィルタ", "description": "Aria-label for the Claude chip. Claude is a proper noun." },
+  "a11yServiceFilterGemini": { "message": "Geminiでフィルタ", "description": "Aria-label for the Gemini chip. Gemini is a proper noun." },
+  "a11yServiceFilterGoogleai": { "message": "GoogleAIでフィルタ", "description": "Aria-label for the GoogleAI chip. GoogleAI is a proper noun." },
+  "a11yServiceFilterGrok": { "message": "Grokでフィルタ", "description": "Aria-label for the Grok chip. Grok is a proper noun." },
+  "a11yServiceFilterXgrok": { "message": "X内Grokでフィルタ", "description": "Aria-label for the X-Grok chip (Grok feature embedded in X.com)." },
+  "a11yDatePresetAll": { "message": "全期間", "description": "Aria-label for the date preset chip that selects all dates." },
+  "a11yDatePreset7d": { "message": "過去7日", "description": "Aria-label for the 7-day date preset chip." },
+  "a11yDatePreset30d": { "message": "過去30日", "description": "Aria-label for the 30-day date preset chip." },
+  "a11yAccountFilter": { "message": "アカウントでフィルタ", "description": "Aria-label for the account select." },
+  "a11ySortToggle": { "message": "並び替え方向切替", "description": "Aria-label for the sort direction button." },
+  "a11yScrollTop": { "message": "リストの先頭へ戻る", "description": "Aria-label and tooltip for the floating scroll-to-top button shown when the list is scrolled down." },
+
+  "chipWithCount": {
+    "message": "$LABEL$($COUNT$)",
+    "description": "Service chip label with a count badge. ja uses no space (`All(15)`); en uses a space before the parenthesis (`All (15)`).",
+    "placeholders": {
+      "label": { "content": "$1", "example": "ChatGPT" },
+      "count": { "content": "$2", "example": "15" }
+    }
+  },
+
+  "filterDatePresetAll": { "message": "全期間", "description": "Date range preset chip for showing all dates." },
+  "filterDatePreset7d": { "message": "7日", "description": "Date range preset chip for the past 7 days." },
+  "filterDatePreset30d": { "message": "30日", "description": "Date range preset chip for the past 30 days." },
+  "filterSearchPlaceholder": { "message": "タイトル検索", "description": "Placeholder and aria-label for the title search input." },
+  "filterSortDesc": { "message": "更新日▼", "description": "Sort direction button label (descending = newest first)." },
+  "filterSortAsc": { "message": "更新日▲", "description": "Sort direction button label (ascending = oldest first)." },
+
+  "accountAllWithCount": {
+    "message": "全アカウント($COUNT$)",
+    "description": "Account select option label with a count badge.",
+    "placeholders": { "count": { "content": "$1", "example": "118" } }
+  },
+
+  "menuExportJson": { "message": "JSON でエクスポート", "description": "Menu item that exports all records as a JSON file." },
+  "menuExportCsv": { "message": "CSV でエクスポート", "description": "Menu item that exports all records as a CSV file." },
+  "menuImportJson": { "message": "JSON からインポート", "description": "Menu item that imports records from a JSON file." },
+
+  "emptyNoHistoryTitle": { "message": "まだ履歴がありません", "description": "Empty-state title shown when no records exist in IndexedDB." },
+  "emptyNoHistoryHint": { "message": "ヘッダー右上の「同期」を押すと履歴を取得します。", "description": "Empty-state hint suggesting the user runs sync." },
+  "emptyFilteredTitle": { "message": "該当する履歴がありません", "description": "Empty-state title shown when filters exclude all records." },
+  "emptyFilteredHint": { "message": "フィルタ条件を変更してください。", "description": "Empty-state hint suggesting the user adjust filters." },
+
+  "dialogMismatchTitle": { "message": "別アカウントのチャットです", "description": "Title of the account-mismatch warning dialog." },
+  "dialogMismatchTargetLabel": { "message": "対象: ", "description": "Prefix label before the target account email in the mismatch dialog body. Includes trailing space." },
+  "dialogMismatchCopyUrl": { "message": "URL コピー", "description": "Button label that copies the conversation URL to clipboard." },
+  "dialogMismatchOpenAnyway": { "message": "そのまま開く", "description": "Button label that opens the conversation in current browser despite mismatch." },
+
+  "dialogSyncTitle": { "message": "同期対象を選択", "description": "Title of the sync-services selection dialog." },
+  "dialogSyncConfirm": { "message": "実行", "description": "Confirm button label inside the sync dialog." },
+  "dialogDeleteTitle": { "message": "削除対象を選択(取消不可)", "description": "Title of the delete-services selection dialog. The (irreversible) suffix is intentional." },
+  "dialogDeleteConfirm": { "message": "削除", "description": "Confirm button label inside the delete dialog." },
+  "dialogSelectionAll": { "message": "全て", "description": "Checkbox label for the All option in sync/delete dialogs." },
+
+  "serviceXgrok": { "message": "X内Grok", "description": "Display name for the Grok feature embedded in X.com. Use proper noun for the rest (ChatGPT/Claude/Gemini/GoogleAI/Grok)." },
+
+  "commonUntitled": { "message": "(無題)", "description": "Fallback label for records without a title (rec.title is empty)." },
+  "badgeMismatch": { "message": "⚠ 別アカウント", "description": "Row badge shown when the record's accountEmail differs from the current Chrome profile." },
+
+  "statusLoginRequired": { "message": "ログイン必要", "description": "Status label for the not_logged_in error code." },
+  "statusNetworkError": { "message": "ネットワークエラー", "description": "Status label for the network_error code (fetch TypeError)." },
+  "statusTabUnreachable": { "message": "タブ未開", "description": "Status label for the tab_unreachable code (no matching tab found)." },
+  "statusContentUnreachable": { "message": "要リロード", "description": "Status label for the content_unreachable code (content script not injected; reload tab)." },
+  "statusAccountUnknown": { "message": "アカウント特定不可", "description": "Status label for account_email_not_found / screenname_not_found codes." },
+  "statusDomChanged": { "message": "DOM 構造変更", "description": "Status label for pfp_not_found / userid_not_found / history_container_not_found / profile_link_not_found codes." },
+  "statusInvalidOrg": { "message": "組織情報不正", "description": "Status label for the invalid_org_entry code (Claude organization parsing failed)." },
+  "statusInvalidShape": { "message": "応答形式不正", "description": "Status label for the unexpected_response_shape code." },
+  "statusSessionFailed": { "message": "セッション取得失敗", "description": "Status label for the session_retrieval_failed code (Gemini)." },
+  "statusConvFetchFailed": { "message": "履歴取得失敗", "description": "Status label for the conversations_retrieval_failed code (X-Grok)." },
+  "statusGenericError": { "message": "エラー", "description": "Status label for unrecognized error codes." },
+  "statusErrorUnknown": { "message": "不明エラー", "description": "Fallback used when an error string is missing." },
+
+  "syncing": { "message": "同期中…", "description": "Sync button text during a sync flow (with spinner)." },
+  "syncBtnTotalCount": {
+    "message": "同期 ($COUNT$件)",
+    "description": "Sync button text after a multi-service sync completes.",
+    "placeholders": { "count": { "content": "$1", "example": "275" } }
+  },
+  "syncBtnSingleCount": {
+    "message": "同期 ($SVC$ $COUNT$件)",
+    "description": "Sync button text after a single-service sync completes.",
+    "placeholders": {
+      "svc": { "content": "$1", "example": "ChatGPT" },
+      "count": { "content": "$2", "example": "153" }
+    }
+  },
+  "syncBtnFailed": { "message": "同期 (失敗)", "description": "Sync button text when all services fail." },
+
+  "statusSyncRowOk": {
+    "message": "$SVC$: ✓ $COUNT$件",
+    "description": "Per-service sync success row in the status bar.",
+    "placeholders": {
+      "svc": { "content": "$1", "example": "ChatGPT" },
+      "count": { "content": "$2", "example": "119" }
+    }
+  },
+  "statusSyncFailed": { "message": "同期失敗: 詳細はコンソール", "description": "Status bar message when the entire sync flow throws." },
+
+  "syncActionGemini": { "message": "タブで開いてから再同期してください", "description": "Action button label that opens gemini.google.com and asks the user to retry. Service name omitted to fit narrow side-panel width; the adjacent service-row label identifies which service this action targets." },
+  "syncActionGoogleai": { "message": "タブで開いてから再同期してください", "description": "Action button label that opens google.com/search?udm=50 and asks the user to retry. Service name omitted to fit narrow side-panel width; the adjacent service-row label identifies which service this action targets." },
+  "syncActionGrok": { "message": "タブで開いてから再同期してください", "description": "Action button label that opens grok.com and asks the user to retry. Service name omitted to fit narrow side-panel width; the adjacent service-row label identifies which service this action targets." },
+  "syncActionXgrok": { "message": "タブで開いてから再同期してください", "description": "Action button label that opens x.com/i/grok/history and asks the user to retry. Service name omitted to fit narrow side-panel width; the adjacent service-row label identifies which service this action targets." },
+
+  "deleteSvcCount": {
+    "message": "$SVC$ ($COUNT$件)",
+    "description": "Per-service breakdown entry inside the delete-success status bar message.",
+    "placeholders": {
+      "svc": { "content": "$1", "example": "ChatGPT" },
+      "count": { "content": "$2", "example": "5" }
+    }
+  },
+  "statusDeleteOk": {
+    "message": "削除しました: $BREAKDOWN$ 合計 $TOTAL$件",
+    "description": "Status bar message after successful delete.",
+    "placeholders": {
+      "breakdown": { "content": "$1", "example": "ChatGPT (5件), Grok (3件)" },
+      "total": { "content": "$2", "example": "8" }
+    }
+  },
+  "statusDeleteEmpty": { "message": "(対象なし)", "description": "Breakdown placeholder when no records were deleted." },
+  "statusDeleteFailed": {
+    "message": "削除失敗: $ERR$",
+    "description": "Status bar message after a delete error from SW.",
+    "placeholders": { "err": { "content": "$1", "example": "DB write error" } }
+  },
+  "statusDeleteFailedConsole": { "message": "削除失敗: 詳細はコンソール", "description": "Status bar message when the delete flow throws." },
+
+  "toastFavoriteFailed": { "message": "お気に入り更新失敗: 詳細はコンソール", "description": "Status bar message when toggling favorite fails to write to IndexedDB." },
+
+  "toastExportJsonOk": {
+    "message": "$COUNT$ 件をエクスポートしました (JSON)",
+    "description": "Status bar message after a successful JSON export.",
+    "placeholders": { "count": { "content": "$1", "example": "118" } }
+  },
+  "toastExportCsvOk": {
+    "message": "$COUNT$ 件をエクスポートしました (CSV)",
+    "description": "Status bar message after a successful CSV export.",
+    "placeholders": { "count": { "content": "$1", "example": "118" } }
+  },
+  "toastExportFailed": { "message": "エクスポート失敗: 詳細はコンソール", "description": "Status bar message when the export flow throws." },
+
+  "toastImportFilePickFailed": { "message": "インポート失敗: ファイル選択でエラー", "description": "Status bar message when the OS file picker fails." },
+  "toastImportCanceled": { "message": "インポートをキャンセルしました", "description": "Status bar message when the user cancels the import." },
+  "toastImportInvalidJson": { "message": "インポート失敗: JSON 形式が不正", "description": "Status bar message for the invalid_json error code." },
+  "toastImportNotArray": { "message": "インポート失敗: 配列形式ではありません", "description": "Status bar message for the not_an_array error code." },
+  "toastImportGenericFailed": {
+    "message": "インポート失敗: $DETAIL$",
+    "description": "Status bar message for unknown import errors.",
+    "placeholders": { "detail": { "content": "$1", "example": "JSON parse error" } }
+  },
+  "toastImportDbReadFailed": { "message": "インポート失敗: DB 読み込みエラー", "description": "Status bar message when readAll() throws during import." },
+  "toastImportMergeFailed": { "message": "インポート失敗: マージ処理でエラー", "description": "Status bar message when mergeRecords throws during import." },
+  "toastImportDbWriteFailed": { "message": "インポート失敗: DB 書き込みエラー", "description": "Status bar message when upsert() throws during import." },
+  "toastImportOk": {
+    "message": "インポート完了: 新規 $CREATED$ 件 / 更新 $UPDATED$ 件",
+    "description": "Status bar message after a successful import.",
+    "placeholders": {
+      "created": { "content": "$1", "example": "12" },
+      "updated": { "content": "$2", "example": "3" }
+    }
+  },
+
+  "importConfirmBody": {
+    "message": "インポート内容:\n  新規: $CREATED$ 件\n  更新: $UPDATED$ 件\n  変更なし: $UNCHANGED$ 件\n  無効: $INVALID$ 件\n\n※ 同じ service / accountEmail / conversationId のレコードは\n  updatedAt が新しい方で上書きされます\n※ お気に入り (♥) は JSON に含まれていれば上書きされます\n\n反映しますか?",
+    "description": "Multi-line confirm() text shown before applying an import. Use \\n for line breaks. Numbers are filled from $CREATED$/$UPDATED$/$UNCHANGED$/$INVALID$.",
+    "placeholders": {
+      "created": { "content": "$1", "example": "12" },
+      "updated": { "content": "$2", "example": "3" },
+      "unchanged": { "content": "$3", "example": "100" },
+      "invalid": { "content": "$4", "example": "0" }
+    }
+  }
+}

@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <title>LLM History Hub</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body hidden>
+  <header class="hub-header">
+    <div class="hub-brand"><img class="hub-brand-icon" src="../icons/icon-48.png" alt=""><span>LLM History Hub</span></div>
+    <div class="hub-actions">
+      <button type="button" class="hub-btn" id="hub-sync"
+        data-i18n="actionSync"
+        data-i18n-attr="title:actionSync;aria-label:actionSync">同期</button>
+      <button type="button" class="hub-btn hub-btn--danger" id="hub-delete"
+        data-i18n="actionDelete"
+        data-i18n-attr="title:actionDelete;aria-label:actionDelete">削除</button>
+      <details class="hub-menu" id="hub-menu">
+        <summary class="hub-btn"
+          data-i18n-attr="aria-label:a11yMenu;title:a11yMenu">⋯</summary>
+        <ul class="hub-menu-panel" role="menu">
+          <li id="hub-menu-export-json" role="menuitem" tabindex="0" data-i18n="menuExportJson">JSON でエクスポート</li>
+          <li id="hub-menu-export-csv" role="menuitem" tabindex="0" data-i18n="menuExportCsv">CSV でエクスポート</li>
+          <li id="hub-menu-import-json" role="menuitem" tabindex="0" data-i18n="menuImportJson">JSON からインポート</li>
+        </ul>
+      </details>
+    </div>
+  </header>
+
+  <div class="hub-status" id="hub-status" role="status" aria-live="polite" aria-atomic="true" hidden></div>
+
+  <section class="hub-filters" data-i18n-attr="aria-label:a11yFilterSection">
+    <div class="hub-date-filter" role="group" data-i18n-attr="aria-label:a11yDateRangeFilter">
+      <button type="button" class="hub-chip hub-date-preset" data-preset="all" data-active="true"
+        data-i18n="filterDatePresetAll"
+        data-i18n-attr="aria-label:a11yDatePresetAll">全期間</button>
+      <button type="button" class="hub-chip hub-date-preset" data-preset="7d"
+        data-i18n="filterDatePreset7d"
+        data-i18n-attr="aria-label:a11yDatePreset7d">7日</button>
+      <button type="button" class="hub-chip hub-date-preset" data-preset="30d"
+        data-i18n="filterDatePreset30d"
+        data-i18n-attr="aria-label:a11yDatePreset30d">30日</button>
+      <input type="date" class="hub-date-input" id="hub-date-from" data-empty="true"
+        data-i18n-attr="aria-label:a11yDateFrom">
+      <span class="hub-date-sep" aria-hidden="true">─</span>
+      <input type="date" class="hub-date-input" id="hub-date-to" data-empty="true"
+        data-i18n-attr="aria-label:a11yDateTo">
+    </div>
+    <div class="hub-chips" role="tablist" id="hub-chips"
+      data-i18n-attr="aria-label:a11yServiceFilter">
+      <button type="button" class="hub-chip is-active" data-service="all"
+        data-i18n-attr="aria-label:a11yServiceFilterAll">All(0)</button>
+      <button type="button" class="hub-chip hub-chip--favorite" data-service="favorite"
+        data-i18n-attr="aria-label:a11yServiceFilterFavorite">♥(0)</button>
+      <button type="button" class="hub-chip" data-service="chatgpt"
+        data-i18n-attr="aria-label:a11yServiceFilterChatgpt">ChatGPT(0)</button>
+      <button type="button" class="hub-chip" data-service="claude"
+        data-i18n-attr="aria-label:a11yServiceFilterClaude">Claude(0)</button>
+      <button type="button" class="hub-chip" data-service="gemini"
+        data-i18n-attr="aria-label:a11yServiceFilterGemini">Gemini(0)</button>
+      <button type="button" class="hub-chip" data-service="googleai"
+        data-i18n-attr="aria-label:a11yServiceFilterGoogleai">GoogleAI(0)</button>
+      <button type="button" class="hub-chip" data-service="grok"
+        data-i18n-attr="aria-label:a11yServiceFilterGrok">Grok(0)</button>
+      <button type="button" class="hub-chip" data-service="xgrok"
+        data-i18n-attr="aria-label:a11yServiceFilterXgrok">X(0)</button>
+    </div>
+    <select class="hub-account-select" id="hub-account-select"
+      data-i18n-attr="aria-label:a11yAccountFilter">
+      <option value="all">全アカウント(0)</option>
+    </select>
+    <div class="hub-search-row">
+      <input type="search" class="hub-search" id="hub-search"
+        data-i18n-attr="placeholder:filterSearchPlaceholder;aria-label:filterSearchPlaceholder">
+      <button type="button" class="hub-sort-toggle" id="hub-sort-toggle" aria-pressed="false"
+        data-i18n="filterSortDesc"
+        data-i18n-attr="aria-label:a11ySortToggle">更新日▼</button>
+    </div>
+  </section>
+
+  <ul class="hub-list" id="hub-list" hidden></ul>
+
+  <button type="button" class="hub-scroll-top" id="hub-scroll-top"
+    data-i18n-attr="aria-label:a11yScrollTop;title:a11yScrollTop">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 14 12 8 18 14"/></svg>
+  </button>
+
+  <div class="hub-empty" id="hub-empty">
+    <div class="hub-empty-title" data-i18n="emptyNoHistoryTitle">まだ履歴がありません</div>
+    <div class="hub-empty-hint" data-i18n="emptyNoHistoryHint">ヘッダー右上の「同期」を押すと履歴を取得します。</div>
+  </div>
+
+  <dialog class="hub-dialog" id="hub-mismatch-dialog" aria-labelledby="hub-mismatch-title">
+    <div class="hub-dialog-title" id="hub-mismatch-title" data-i18n="dialogMismatchTitle">別アカウントのチャットです</div>
+    <div class="hub-dialog-body">
+      <span data-i18n="dialogMismatchTargetLabel">対象: </span><span class="hub-dialog-account" id="hub-mismatch-account"></span>
+    </div>
+    <div class="hub-dialog-actions">
+      <button type="button" data-action="cancel" autofocus
+        data-i18n="actionCancel"
+        data-i18n-attr="aria-label:actionCancel">キャンセル</button>
+      <button type="button" data-action="copy"
+        data-i18n="dialogMismatchCopyUrl"
+        data-i18n-attr="aria-label:dialogMismatchCopyUrl">URL コピー</button>
+      <button type="button" data-action="open"
+        data-i18n="dialogMismatchOpenAnyway"
+        data-i18n-attr="aria-label:dialogMismatchOpenAnyway">そのまま開く</button>
+    </div>
+  </dialog>
+
+  <dialog class="hub-dialog hub-dialog--selection" id="hub-sync-dialog" aria-labelledby="hub-sync-dialog-title">
+    <div class="hub-dialog-title" id="hub-sync-dialog-title" data-i18n="dialogSyncTitle">同期対象を選択</div>
+    <ul class="hub-dialog-checklist" data-kind="sync">
+      <li><label><input type="checkbox" data-svc="all" checked> <span data-i18n="dialogSelectionAll">全て</span></label></li>
+      <li class="is-divider" aria-hidden="true"></li>
+      <li><label><input type="checkbox" data-svc="chatgpt" checked> ChatGPT</label></li>
+      <li><label><input type="checkbox" data-svc="claude" checked> Claude</label></li>
+      <li><label><input type="checkbox" data-svc="gemini" checked> Gemini</label></li>
+      <li><label><input type="checkbox" data-svc="googleai" checked> GoogleAI</label></li>
+      <li><label><input type="checkbox" data-svc="grok" checked> Grok</label></li>
+      <li><label><input type="checkbox" data-svc="xgrok" checked> <span data-i18n="serviceXgrok">X内Grok</span></label></li>
+    </ul>
+    <div class="hub-dialog-actions">
+      <button type="button" data-action="cancel" autofocus data-i18n="actionCancel">キャンセル</button>
+      <button type="button" data-action="confirm" class="hub-btn--primary" data-i18n="dialogSyncConfirm">実行</button>
+    </div>
+  </dialog>
+
+  <dialog class="hub-dialog hub-dialog--selection" id="hub-delete-dialog" aria-labelledby="hub-delete-dialog-title">
+    <div class="hub-dialog-title is-danger" id="hub-delete-dialog-title" data-i18n="dialogDeleteTitle">削除対象を選択(取消不可)</div>
+    <ul class="hub-dialog-checklist" data-kind="delete">
+      <li><label><input type="checkbox" data-svc="all" checked> <span data-i18n="dialogSelectionAll">全て</span></label></li>
+      <li class="is-divider" aria-hidden="true"></li>
+      <li><label><input type="checkbox" data-svc="chatgpt" checked> ChatGPT</label></li>
+      <li><label><input type="checkbox" data-svc="claude" checked> Claude</label></li>
+      <li><label><input type="checkbox" data-svc="gemini" checked> Gemini</label></li>
+      <li><label><input type="checkbox" data-svc="googleai" checked> GoogleAI</label></li>
+      <li><label><input type="checkbox" data-svc="grok" checked> Grok</label></li>
+      <li><label><input type="checkbox" data-svc="xgrok" checked> <span data-i18n="serviceXgrok">X内Grok</span></label></li>
+    </ul>
+    <div class="hub-dialog-actions">
+      <button type="button" data-action="cancel" autofocus data-i18n="actionCancel">キャンセル</button>
+      <button type="button" data-action="confirm" class="hub-btn--danger" data-i18n="dialogDeleteConfirm">削除</button>
+    </div>
+  </dialog>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
