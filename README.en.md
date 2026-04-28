@@ -26,6 +26,56 @@ A Chrome extension (Manifest V3) for unified management of chat history across C
 4. Click "Load unpacked" and select the repository's root directory (or the extracted folder)
 5. Click the extension's toolbar icon to open the side panel
 
+## Getting Started
+
+### 1. Open the side panel
+
+Click the extension's toolbar icon to open the side panel on the right side of the browser. The side panel is resizable — drag its left edge to adjust the width.
+
+### 2. Sync your history
+
+You must be **logged in** to each LLM service (ChatGPT / Claude / Gemini / GoogleAI / Grok / Grok on X) beforehand.
+
+1. Click the **Sync** button in the header
+2. Choose services in the dialog (Select All or individual checkboxes)
+3. Click **Sync** to run
+
+If a service's tab is not open at sync time, the error row shows "Open it in a tab and re-sync" with an inline link that opens the service in a new tab.
+
+### 3. Browse the list
+
+Conversations are grouped by date and color-coded by service (ChatGPT green / Claude orange / Gemini blue / GoogleAI purple / Grok black / Grok on X black). Each row shows the **title**, **service**, **account identifier**, and **last updated time**.
+
+- **Click a row**: open the original conversation in a new tab
+- **Copy URL** button: copy the conversation URL to clipboard
+- **♥ button**: toggle favorite
+- **`⚠ Different account` badge** (yellow background): the row was synced under a different account than the one currently logged in
+
+### 4. Search & filter
+
+- **Search box**: substring match against titles
+- **Date range filter**: presets "All time / Past 7 days / Past 30 days", or specify `from / to` dates
+- **Service chips**: `All` / `♥` / per-service (single-select)
+- **Account select**: filter when you use multiple accounts within the same service
+- **Sort toggle** (Updated ▼/▲): switch between descending and ascending order
+
+Filters are combined with AND. Count badges next to each chip / account option reflect the current filter state.
+
+### 5. Favorites
+
+Toggle the **♥** button on each row. Use the `♥` chip to view favorites only. Favorite state is preserved across syncs (existing ♥s are never overwritten by sync) and is included in JSON exports, so you can migrate them across environments via export → import.
+
+### 6. Export / Import
+
+From the **⋯ menu** in the upper right of the side panel:
+
+- **Export JSON** / **Export CSV**: exports all records (filters do not apply)
+- **Import JSON**: select a file → records sharing the same `service` / `accountEmail` / `conversationId` are merged with the newer `updatedAt` winning
+
+### 7. Delete history
+
+Click the **Delete** button in the header → choose services in the dialog → click **Delete**. Selecting "All" deletes the entire database. **This cannot be undone.**
+
 ## Permissions
 
 | Permission | Purpose |
