@@ -1,2 +1,5 @@
 .DS_Store
 *.zip
+
+# Claude Code: personal permission rules can contain approved commands verbatim
+.claude/settings.local.json
